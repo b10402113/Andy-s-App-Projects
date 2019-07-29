@@ -23,110 +23,70 @@ class ViewController: UIViewController {
     @IBOutlet weak var CakeMoney06: UILabel!
     @IBOutlet weak var CakeCount06: UILabel!
     @IBOutlet weak var TotalDollars: UILabel!
+    
+    var moneys = [UILabel]()
+    var counts = [UILabel]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        var moneys = [UILabel]()
         moneys = [CakeMoney01,CakeMoney02,CakeMoney03,CakeMoney04,CakeMoney05,CakeMoney06]
-        var counts = [UILabel]()
+        
         counts =    [CakeCount01,CakeCount02,CakeCount03,CakeCount04,CakeCount05,CakeCount06]
     }
 
     @IBAction func CakePlus01(_ sender: Any) {
-        let money:Int = ( Int(CakeCount01.text!) ?? 0 ) + 1
-        CakeCount01.text = "\(money)"
-        calculateSum()
+        add(N: 0)
     }
     @IBAction func CakeSub01(_ sender: Any) {
-        if let text = CakeCount01.text, let value = Int(text)
-        {
-            if(value <= 0){
-                CakeCount01.text = "\(0)"
-            }else{
-                CakeCount01.text = "\( value - 1 )"
-            }
-        }
-        calculateSum()
+        sub(N: 0)
     }
     @IBAction func CakePlus02(_ sender: Any) {
-        let money:Int = ( Int(CakeCount02.text!) ?? 0 ) + 1
-        CakeCount02.text = "\(money)"
-        calculateSum()
+        add(N: 1)
     }
     
     @IBAction func CakeSub02(_ sender: Any) {
-        if let text = CakeCount02.text, let value = Int(text)
-        {
-            if(value <= 0){
-                CakeCount02.text = "\(0)"
-            }else{
-                CakeCount02.text = "\( value - 1 )"
-            }
-        }
-        calculateSum()
+        sub(N: 1)
     }
     @IBAction func CakePlus03(_ sender: Any) {
-        let money:Int = ( Int(CakeCount03.text!) ?? 0 ) + 1
-        CakeCount03.text = "\(money)"
-        calculateSum()
+        add(N: 2)
     }
     
     @IBAction func CakeSub03(_ sender: Any) {
-        if let text = CakeCount03.text, let value = Int(text)
-        {
-            if(value <= 0){
-                CakeCount03.text = "\(0)"
-            }else{
-                CakeCount03.text = "\( value - 1 )"
-            }
-        }
-        calculateSum()
+        sub(N: 2)
     }
     
     @IBAction func CakePlus04(_ sender: Any) {
-        let money:Int = ( Int(CakeCount04.text!) ?? 0 ) + 1
-        CakeCount04.text = "\(money)"
-        calculateSum()
+        add(N: 3)
     }
     @IBAction func CakeSub04(_ sender: Any) {
-        if let text = CakeCount04.text, let value = Int(text)
-        {
-            if(value <= 0){
-                CakeCount04.text = "\(0)"
-            }else{
-                CakeCount04.text = "\( value - 1 )"
-            }
-        }
-        calculateSum()
+        sub(N: 3)
     }
     @IBAction func CakePlus05(_ sender: Any) {
-        let money:Int = ( Int(CakeCount05.text!) ?? 0 ) + 1
-        CakeCount05.text = "\(money)"
-        calculateSum()
+        add(N: 4)
     }
     @IBAction func CakeSub05(_ sender: Any) {
-        if let text = CakeCount05.text, let value = Int(text)
-        {
-            if(value <= 0){
-                CakeCount05.text = "\(0)"
-            }else{
-                CakeCount05.text = "\( value - 1 )"
-            }
-        }
-        calculateSum()
+        
+        sub(N: 4)
     }
     @IBAction func CakePlus06(_ sender: Any) {
-        let money:Int = ( Int(CakeCount06.text!) ?? 0 ) + 1
-        CakeCount06.text = "\(money)"
-        calculateSum()
+        add(N: 5)
     }
     @IBAction func CakeSub06(_ sender: Any) {
-        if let text = CakeCount06.text, let value = Int(text)
+        sub(N: 5)
+    }
+    func add(N:Int){
+        let money:Int = ( Int(counts[N].text!) ?? 0 ) + 1
+       counts[N].text = "\(money)"
+        calculateSum()
+    }
+    func sub(N:Int){
+        if let text = counts[N].text, let value = Int(text)
         {
             if(value <= 0){
-                CakeCount06.text = "\(0)"
+                counts[N].text = "\(0)"
             }else{
-                CakeCount06.text = "\( value - 1 )"
+                counts[N].text = "\( value - 1 )"
             }
         }
         calculateSum()
@@ -134,11 +94,7 @@ class ViewController: UIViewController {
     func calculateSum(){
         if var text = TotalDollars.text,var sum = Int(text){
             sum = 0
-            var moneys = [UILabel]()
-            moneys = [CakeMoney01,CakeMoney02,CakeMoney03,CakeMoney04,CakeMoney05,CakeMoney06]
-            var counts = [UILabel]()
-            counts = [CakeCount01,CakeCount02,CakeCount03,CakeCount04,CakeCount05,CakeCount06]
-            for i in 0...5{
+           for i in 0...5{
                 if let count = counts[i].text,let countV = Int(count){
                     if let money = moneys[i].text, let moneyV = Int(money){
                         sum = sum + countV * moneyV
