@@ -1,6 +1,5 @@
 import UIKit
 
-var str = "Hello, playground"
 let rect = CGRect(x: 0, y: 0, width: 610, height: 457)
 let backgroundView = UIView(frame: rect)
 backgroundView.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
@@ -43,7 +42,7 @@ backgroundView.addSubview(LeftCurveView)
 // 下右
 let RightCurvePath = UIBezierPath()
 RightCurvePath.move(to: CGPoint(x: 413, y: 100))
-RightCurvePath.addQuadCurve(to: CGPoint(x: 306, y: 400), controlPoint:CGPoint(x: 519, y: 341))
+RightCurvePath.addQuadCurve(to: CGPoint(x: 306, y: 400), controlPoint:CGPoint(x: 551, y: 302))
 RightCurvePath.addLine(to: CGPoint(x: 306, y: 310))
 RightCurvePath.addLine(to: CGPoint(x: 413, y: 248))
 RightCurvePath.close()
@@ -59,4 +58,3 @@ let circle = UIView(frame: CGRect(x: (190 + 390) / 2 - 60, y: (54 + 280) / 2 - 6
 circle.layer.cornerRadius = circle.frame.width / 2
 circle.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
 backgroundView.addSubview(circle)
-
